@@ -31,6 +31,18 @@ def filter_users_by_name(name):
         print(user)
 
 
+def validate_age():
+    while True:
+        try:
+            age = int(input("Enter a age to filter users: ").strip())
+            if 0 <= age <= 120:
+                return age
+            else:
+                print("Error: Age must be between 0 and 120.")
+        except ValueError:
+            print("Error: Please enter an integer.")
+
+
 if __name__ == "__main__":
     filter_option = (
         input(
@@ -44,7 +56,7 @@ if __name__ == "__main__":
         name_to_search = input("Enter a name to filter users: ").strip()
         filter_users_by_name(name_to_search)
     elif filter_option == "age":
-        age_to_search = int(input("Enter a age to filter users: ").strip())
+        age_to_search = validate_age()
         filter_by_age(age_to_search)
     elif filter_option == "email":
         email_to_search = input("Enter a email to filter users: ").strip()
